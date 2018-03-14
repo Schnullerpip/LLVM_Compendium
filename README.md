@@ -11,3 +11,10 @@ just a collection of useful scripts and research
 
 *three adress form/code* - In computer science, three-address code is an intermediate code used by optimizing compilers to aid in the implementation of code-improving transformations. Each TAC instruction has at most three operands and is typically a combination of assignment and a binary operator. For example, t1 := t2 + t3
 
+
+*llvm file formats* 
+```sh
+$ .ll - textual format
+$ .bc - efficient and dense on-disk binary "bitcode" format
+$ The LLVM Project also provides tools to convert the on-disk format from text to binary: llvm-as assembles the textual .ll file into a .bc file containing the bitcode goop and llvm-dis turns a .bc file into a .ll file
+```
