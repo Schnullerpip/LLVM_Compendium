@@ -9,3 +9,5 @@ just a collection of useful scripts and research
 
 *instruction scheduling* - In computer science, instruction scheduling is a compiler optimization used to improve instruction-level parallelism, which improves performance on machines with instruction pipelines. Put more simply, without changing the meaning of the code, it tries to. Avoid pipeline stalls by rearranging the order of instructions.
 
+*three adress form/code* - In computer science, three-address code is an intermediate code used by optimizing compilers to aid in the implementation of code-improving transformations. Each TAC instruction has at most three operands and is typically a combination of assignment and a binary operator. For example, t1 := t2 + t3
+
