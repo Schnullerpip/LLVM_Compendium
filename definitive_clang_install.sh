@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#export LLVM_SRC_ROOT=`pwd`
-
 LLVM_SRC_VERSION=trunk
 LLVM_SRC_VERSION_REPO_DIR=trunk
 # this var gets appended with LLVM_SRC_VERSION
