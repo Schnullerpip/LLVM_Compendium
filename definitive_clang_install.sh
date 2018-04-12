@@ -49,10 +49,6 @@ cmake -G "Ninja" \
 # -DLLVM_OPTIMIZED_TABLEGEN=ON \
 # -DCLANG_BUILD_EXAMPLES=ON \
 # -DLLVM_BUILD_EXAMPLES=ON \
-# -DLLVM_BUILD_DOCS=ON \
-# Build doxygen-based documentation from the source code. \
-# This is disabled by default because it is slow and generates a lot of output. \
-# -DLLVM_ENABLE_DOXYGEN=ON \
  $LLVM_SRC_ROOT
 
 # needed for LibTooling
@@ -64,9 +60,27 @@ ninja
 ninja check-all   # Test all. (I guess?)
 
 # build again but this time set Clang as its own compiler
+# this invalidates the cmake cache and all other options need to be applied again
 cmake \
  -DCMAKE_C_COMPILER=$LLVM_INSTALL_ROOT/bin/clang \
  -DCMAKE_CXX_COMPILER=$LLVM_INSTALL_ROOT/bin/clang++ \
+ -DCMAKE_INSTALL_PREFIX=$LLVM_INSTALL_ROOT \
+ -DCMAKE_BUILD_TYPE=Release \
+#TODO check: -DLLVM_ENABLE_ASSERTIONS=ON \
+# needed for LibTooling \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+ -DLLVM_EXPORT_SYMBOLS_FOR_PLUGINS=ON \
+ -DLLVM_BUILD_TESTS=ON \
+# Builds a release tablegen that gets used during the LLVM build. This can dramatically speed up debug builds. \
+# -DLLVM_OPTIMIZED_TABLEGEN=ON \
+# -DCLANG_BUILD_EXAMPLES=ON \
+# -DLLVM_BUILD_EXAMPLES=ON \
  $LLVM_SRC_ROOT
 
+# to really make sure everything works
+ninja check-all
+
 ninja install
+
+# you should add the install dir to the PATH variable
+# linux: /etc/environment
